@@ -1,0 +1,22 @@
+name: Send workbook notifications
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # every ~15 minutes
+  workflow_dispatch: {}       # lets you trigger it manually from the Actions tab, for testing
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: notifier
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+      - run: node notify.js
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
