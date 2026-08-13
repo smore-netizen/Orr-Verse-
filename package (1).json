@@ -1,0 +1,8 @@
+{
+  "name": "one-chapter-notifier",
+  "description": "Free notification runner for One Chapter, Two Hearts — runs via GitHub Actions, not Firebase Cloud Functions, so no Blaze plan is needed.",
+  "private": true,
+  "dependencies": {
+    "firebase-admin": "^12.1.0"
+  }
+}
